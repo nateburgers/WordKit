@@ -11,13 +11,9 @@
 
 #include "prefix.h"
 
-Integer integerHash(Integer);
-
-String string(String);
-
 typedef const struct _List *const List;
 
-#define L(...) ListWithElements(__VA_ARGS__, NULL)
+#define LIST(...) ListWithElements(__VA_ARGS__, NULL)
 List ListNil();
 List ListWithHead(Dynamic head);
 List ListWithHeadAndTail(Dynamic head, List tail);

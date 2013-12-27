@@ -14,8 +14,15 @@
 #pragma mark - Private Headers
 
 Boolean StringIncludesCharacter(String, Unichar);
+
 ParseResult _parseCharacterClass(Parser, String);
 ParseResult _parseConjunction(Parser, String);
+ParseResult _parseDisjunction(Parser, String);
+ParseResult _parseMany(Parser, String);
+ParseResult _parsePossiblyMany(Parser, String);
+ParseResult _parseOptional(Parser, String);
+ParseResult _parseOr(Parser, String);
+ParseResult _parseAnd(Parser, String);
 
 #pragma mark - Data Structures
 
@@ -127,6 +134,18 @@ Parser ParserWithConjunction(Parser parser0, Parser parser1)
     return heapCopy(&parser, sizeof(struct _Parser));
 }
 
+Parser ParserWithDisjunction(Parser parser0, Parser parser1)
+{
+    const struct _Parser parser = {
+        .method = _parseDisjunction,
+        .variant.dyadicParser = {
+            .parser0 = parser0,
+            .parser1 = parser1,
+        }
+    };
+    return heapCopy(&parser, sizeof(struct _Parser));
+}
+
 #pragma mark - Private
 
 Boolean StringIncludesCharacter(String string, Unichar character)
@@ -169,16 +188,25 @@ ParseResult _parseConjunction(Parser self, String string)
     ParseResult result0 = parse(parser0, string);
     if (ParseResultSuccess(result0)) {
         ParseResult result1 = parse(parser1, ParseResultRemainder(result0));
-        // TODO properly form this result
-        return ParseResultSuccessfullyConsuming(L(ParseResultValue(result0),
-                                                  ParseResultValue(result1)),
-                                                ParseResultRemainder(result1));
+        List finalResult = LIST(ParseResultValue(result0), ParseResultValue(result1));
+        // TODO: the consumption of the result depends on if the constituent parsers consumed input
+        return ParseResultSuccessfullyConsuming(finalResult, ParseResultRemainder(result1));
     } else {
         return result0;
     }
 }
 
-
+ParseResult _parseDisjunction(Parser self, String string)
+{
+    Parser parser0 = self->variant.dyadicParser.parser0;
+    Parser parser1 = self->variant.dyadicParser.parser1;
+    ParseResult result0 = parse(parser0, string);
+    if (ParseResultSuccess(result0)) {
+        return result0;
+    } else {
+        return parse(parser1, string);
+    }
+}
 
 
 

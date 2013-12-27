@@ -22,6 +22,9 @@ typedef const enum {
     True = 1,
 } Boolean;
 
+String string(String);
+
+Integer integerHash(Integer);
 void *heapCopy(const void *stackAllocatedObject, size_t length);
 
 #endif

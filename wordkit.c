@@ -36,7 +36,7 @@ TEST(StringIncludesCharacterTest) {
     ASSERT(! StringIncludesCharacter(string("abc"), 'd'));
 }
 
-TEST(ParserTest) {
+TEST(ConjunctiveParserTest) {
     Parser abc = ParserWithCharacterClass("abc");
     Parser then = ParserWithConjunction(abc, abc);
     ParseResult result = parse(then, "bcaz");
@@ -45,6 +45,18 @@ TEST(ParserTest) {
     ASSERT(((String)ListHead(ListTail(ParseResultValue(result))))[0] == 'c');
     ASSERT(strcmp(ParseResultRemainder(result), "az") == 0);
     ASSERT(strcmp(ParseResultRemainder(result), "asdf") > 0);
+}
+
+TEST(DisjunctiveParserTest) {
+    Parser abc = ParserWithCharacterClass("abc");
+    Parser xyz = ParserWithCharacterClass("xyz");
+    Parser disjunctiveParser = ParserWithDisjunction(abc, xyz);
+    Parser parse2 = ParserWithConjunction(disjunctiveParser, disjunctiveParser);
+    ParseResult result = parse(parse2, "zbdac");
+    ASSERT(ParseResultSuccess(result));
+    ASSERT(((String)ListHead(ParseResultValue(result)))[0] == 'z');
+    ASSERT(((String)ListHead(ListTail(ParseResultValue(result))))[0] == 'b');
+    ASSERT(strcmp(ParseResultRemainder(result), "dac") == 0);
 }
 
 END_TESTS

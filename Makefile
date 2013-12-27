@@ -1,6 +1,6 @@
 test : clean wordkit.o list.o peg.o prefix.o
 	gcc -o wordkit_test.out wordkit.o list.o peg.o prefix.o ;\
-	./wordkit_test.out;
+	clear; ./wordkit_test.out;
 
 wordkit.o : wordkit.c
 	gcc -c wordkit.c
