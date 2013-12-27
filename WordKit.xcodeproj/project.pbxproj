@@ -6,7 +6,25 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		43543384186CE04900925EE8 /* peg.c in Sources */ = {isa = PBXBuildFile; fileRef = 43543383186CE04900925EE8 /* peg.c */; };
+		43543387186CE0F200925EE8 /* prefix.h in Headers */ = {isa = PBXBuildFile; fileRef = 43543386186CE0F200925EE8 /* prefix.h */; };
+		43543389186D5D0800925EE8 /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = 43543388186D5D0800925EE8 /* list.h */; };
+		4354338B186D5D0F00925EE8 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = 4354338A186D5D0F00925EE8 /* list.c */; };
+		4354338D186D613B00925EE8 /* wordkit.c in Sources */ = {isa = PBXBuildFile; fileRef = 4354338C186D613B00925EE8 /* wordkit.c */; };
+		4354338F186D6C1600925EE8 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 4354338E186D6C1600925EE8 /* Makefile */; };
+		43543391186D6E5200925EE8 /* prefix.c in Sources */ = {isa = PBXBuildFile; fileRef = 43543390186D6E5200925EE8 /* prefix.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		43543383186CE04900925EE8 /* peg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = peg.c; sourceTree = "<group>"; };
+		43543385186CE05E00925EE8 /* peg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = peg.h; sourceTree = "<group>"; };
+		43543386186CE0F200925EE8 /* prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.h; sourceTree = "<group>"; };
+		43543388186D5D0800925EE8 /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		4354338A186D5D0F00925EE8 /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
+		4354338C186D613B00925EE8 /* wordkit.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wordkit.c; sourceTree = "<group>"; };
+		4354338E186D6C1600925EE8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		43543390186D6E5200925EE8 /* prefix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prefix.c; sourceTree = "<group>"; };
 		43D082F61864D76800A7673E /* libWordKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWordKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -24,6 +42,7 @@
 		43D082ED1864D76800A7673E = {
 			isa = PBXGroup;
 			children = (
+				43D082FD1864D77300A7673E /* WordKit */,
 				43D082F71864D76800A7673E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -36,6 +55,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		43D082FD1864D77300A7673E /* WordKit */ = {
+			isa = PBXGroup;
+			children = (
+				4354338C186D613B00925EE8 /* wordkit.c */,
+				4354338E186D6C1600925EE8 /* Makefile */,
+				43543388186D5D0800925EE8 /* list.h */,
+				4354338A186D5D0F00925EE8 /* list.c */,
+				43543385186CE05E00925EE8 /* peg.h */,
+				43543383186CE04900925EE8 /* peg.c */,
+				43543386186CE0F200925EE8 /* prefix.h */,
+				43543390186D6E5200925EE8 /* prefix.c */,
+			);
+			name = WordKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -43,6 +77,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43543387186CE0F200925EE8 /* prefix.h in Headers */,
+				43543389186D5D0800925EE8 /* list.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +133,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43543391186D6E5200925EE8 /* prefix.c in Sources */,
+				4354338B186D5D0F00925EE8 /* list.c in Sources */,
+				4354338D186D613B00925EE8 /* wordkit.c in Sources */,
+				4354338F186D6C1600925EE8 /* Makefile in Sources */,
+				43543384186CE04900925EE8 /* peg.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +247,7 @@
 				43D082FC1864D76800A7673E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
